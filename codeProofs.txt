@@ -1,0 +1,51 @@
+    <sectiom class="search-container">
+        <input type="text" placeholder="Search..." id="search-bar">
+    </section>
+    <section>
+        <button class="search-button" onclick="search()">Search</button>
+    </section>
+
+
+const searchBtn = document.querySelector(".search-button");
+    searchBtn.addEventListener("click", () => {
+
+const searchMovie = async () => {
+    const movieName = document.getElementById("search-bar").value.toLowerCase();
+    if (movieName){
+        try{
+            const response = await axios.get(` /search/shows?q=:query ${movieName}`)
+        }catch (error){
+            console.error("not matches found", error);
+        }
+    }
+}
+
+    })
+
+
+///////////////////////////////////////////
+
+
+const closeMenu = document.getElementById("closeNav-icon");
+console.log(closeMenu);
+
+closeMenu.addEventListener("click", () => {
+    navMenu.classList.remove("showMenu");
+})
+
+////////////////////////////////////////////////
+
+
+const cartIcon = document.getElementById("header-cart");
+console.log(cartIcon);
+const cartBox = document.querySelector(".cart");
+console.log(cartBox);
+
+cartIcon.addEventListener("click", () => {
+    cartBox.classList.toggle("showCart");
+})
+
+
+
+
+
