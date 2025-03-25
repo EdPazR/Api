@@ -22,10 +22,9 @@ console.log(showUser);
 
 showUser.addEventListener("click", () => {
     userBox.classList.toggle("showUser-Box");
-    
-})
 
 /////
+
 const cartIcon = document.getElementById("header-cart");
 console.log(cartIcon);
 const cartBox = document.querySelector(".cart");
@@ -34,12 +33,14 @@ console.log(cartBox);
 cartIcon.addEventListener("click", () => {
     cartBox.classList.toggle("showCart");
 })
+    
+})
 
-//////
+/////    APIS Requesting by movie
 document.addEventListener("DOMContentLoaded", () => {
     const movieName = document.getElementById("search-bar");
     const searchButton = document.querySelector(".search-button");
-    const gridContainer = document.getElementById("results");
+    const gridContainer = document.getElementById("grid-container");
 
     searchButton.addEventListener("click", () => {
         const url = `https://api.tvmaze.com/search/shows?q=${movieName.value}`;
@@ -51,6 +52,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             // Limpiar el grid antes de agregar nuevos resultados
             gridContainer.innerHTML = '';
+
 
             // Iterar sobre la respuesta de la API y agregar cada show al grid
             data.forEach(show => {
@@ -67,8 +69,11 @@ document.addEventListener("DOMContentLoaded", () => {
                 showDiv.innerHTML = `
                     <img src="${imgSrc}" alt="${show.show.name}">
                     <h3>${show.show.name}</h3>
+                    
+                    
                     <p>${show.show.summary ? show.show.summary : 'No hay descripción disponible.'}</p>
-                `;
+                    
+                    `;
 
                 // Añadir el show al grid
                 gridContainer.appendChild(showDiv);
@@ -77,3 +82,41 @@ document.addEventListener("DOMContentLoaded", () => {
         .catch(error => console.error("Error al obtener los datos de Movies:", error));
     });
 });
+
+////////////// APIS Requesting by names
+
+
+document.addEventListener("DOMContentLoaded", () => { 
+    const peopleName = document.getElementById("search-bar");
+    const searchButton = document.querySelector(".search-button");
+    const gridContainer = document.getElementById("grid-container-2");
+  
+    searchButton.addEventListener("click", () => {
+      const url = `https://api.tvmaze.com/search/people?q=${peopleName.value}`;
+  
+      axios.get(url)
+        .then(response => {
+          const dataPeople = response.data;
+  
+          gridContainer.innerHTML = ``;
+  
+          dataPeople.forEach(show => {
+            const showDiv = document.createElement("div");
+            showDiv.classList.add("show-item");
+            console.log(show);
+  
+            const imgSrc = show.person.image ? show.person.image.medium : 'https://via.placeholder.com/200x400?text=No+Image';
+  
+            showDiv.innerHTML = `
+              <img src="${imgSrc}" alt="${show.person.name}">
+              <h3>${show.person.name}</h3>
+              <p>${show.person.summary ? show.person.summary : 'No hay descripción disponible.'}</p>
+            `;
+  
+            gridContainer.appendChild(showDiv);
+          });
+        })
+        .catch(error => console.error("Error al obtener los datos de Movies:", error));
+    });
+  
+  });

@@ -5,7 +5,7 @@ html{
     padding: 0;
     width: 100%; 
     height: 100%;
-    overflow: hidden;
+    overflow-x:hidden;
 }
 
 
@@ -15,6 +15,8 @@ body {
     width: 100%;
     height: 100%;
     font-family: "Tektur";
+    background-color: #000000;
+    
   }
 
 
@@ -80,7 +82,9 @@ body {
 
   
   main {
+    width: 100%;
     background-color: rgb(0, 201, 0);
+    overflow-y: hidden;
   }
   
 
@@ -144,14 +148,16 @@ body {
     align-items: center;
     text-align: center;
     transition:  .25s all;
+    
 
     .userBox-container{
-        
+        background-color: #000000;
         display: flex;
         flex-direction: column;
-        justify-content: center;
+        justify-content: space-around;
         align-items: center;
         text-align: center;
+        
     }
 
     h6 {
@@ -192,11 +198,28 @@ body {
 }
 
 .nav2{
+    box-sizing: border-box;
     display:grid;
     grid-template-columns: repeat(5, 1fr);
+    justify-content: space-around;
+    align-items: center;
     gap: 10px;
 
     height: 80px;
+    text-align: center;
+    
+
+    h2{
+
+        font-size: 15px;
+        &:hover{
+            background-color: #383838;
+            color: #ccc;
+            border-radius: 30px;
+            font-size: 15px;
+        }
+    }
+    
 
 }
 
@@ -216,6 +239,7 @@ body {
     margin-top: 5px;
     align-items: center;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;;
+    text-align: center;
 }
 
     .search-button {
@@ -230,33 +254,108 @@ body {
 }
 
     button:hover {
-    background-color: #fcfcfc;
+    background-color: #383838;
     height: 25px;
 }
 }
 
-
-
-.content-container  .show-item{
+.content-container  {
     padding: 20px 20px 20px 20px;
     display: grid;
-    grid-template-columns: repeat(3, 5fr);
-    grid-template-rows: repeat(4, 200px)  ;
+    grid-template-columns: repeat(4, 200px); // El cambio de aqui depende el espacio
+    grid-template-rows: repeat(2, 500px)  ;
     gap: 10px;
-    background-color: rgb(5, 0, 0);
+    background-color: rgb(0, 0, 0);
+    justify-content:space-around;
+    
     
     .grid-box{
         border: 1px solid rgb(255, 255, 255);
         border-radius: 30px;
+
+        
+    }
+
+    img {
+        border-radius: 20px;
     }
 
     h3 {
-        height: 100px;
-        font-size: 1.5 rem;
+        margin-top: 5px;
+        height: 50px;
+        
+        color: #ccc;
+        font-size: 20px;
+    }
+
+    p{
+        margin-top: -20px;
+        height: 50px;
+        font-size: 10px;
+        color: #ccc;
+        
+    }
+
+    div.show-item{
+        
+        gap: 20px;
+        cursor: pointer;
+        margin-left: 10px;
+        margin-right: 10px;
+        
 
     }
 }
 
+
+
+.content-container2 {
+    padding: 20px 20px 20px 20px;
+    display: grid;
+    grid-template-columns: repeat(4, 200px); // El cambio de aqui depende el espacio
+    grid-template-rows: repeat(2, 500px)  ;
+    gap: 10px;
+    background-color: rgb(0, 0, 0);
+    justify-content:space-around;
+    
+    
+    .grid-box{
+        border: 1px solid rgb(255, 255, 255);
+        border-radius: 30px;
+
+        
+    }
+
+    img {
+        border-radius: 20px;
+    }
+
+    h3 {
+        margin-top: 5px;
+        height: 50px;
+        
+        color: #ccc;
+        font-size: 20px;
+    }
+
+    p{
+        margin-top: -20px;
+        height: 50px;
+        font-size: 10px;
+        color: #ccc;
+        
+    }
+
+    div.show-item{
+        
+        gap: 20px;
+        cursor: pointer;
+        margin-left: 10px;
+        margin-right: 10px;
+        
+
+    }
+}
 
 .cart {
     box-sizing: border-box;
@@ -282,7 +381,7 @@ body {
     }
 
     .cart-art{
-    
+        font-size: 10px;
     }
     .cart-art-h1{
         font-size: 20px;
@@ -291,11 +390,37 @@ body {
 }
 
 
-footer {
-    background-color: #ff0000 ;
+.footer {
+    background-color: #4b4b4b ;
+    height: 150px;
+    padding: 30px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    .social {
+        width: 35px;
+        display: flex;
+        flex-direction: column;
+        cursor: pointer;
+    }
+
+    .inst{
+        cursor: pointer;
+            
+    }
+
+    .fb{
+        cursor: pointer;
+
+    }
+    .wa{
+        cursor: pointer;
+
+    }
 }
 
-
+/*
 #results {
     padding: 20px 20px 20px 20px;
     display: grid;
@@ -311,3 +436,4 @@ footer {
     padding: 10px;
     background-color: #f9f9f9;
 }
+    */
