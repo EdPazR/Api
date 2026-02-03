@@ -1,0 +1,47 @@
+
+const movieName = document.getElementById("search-bar");
+
+const searchButton = document.querySelector(".search-button");
+
+searchButton.addEventListener("click" , () => {
+
+    const url = `https://api.tvmaze.com/search/shows?q=${movieName.value}`;
+
+    axios.get(url)
+    .then(response => {
+        const data = response.data
+        console.log(data);
+    })
+    .catch(error => console.error("Error al obtener los datos de Movies:", error));
+})
+
+const loadMovies = async () => {
+    const moviesGrid = document.querySelector(".content-container");
+    try {
+        const response = await axios.get( `https://api.tvmaze.com/search/shows?q=${movieName.value}`);
+        const movies = response.data.results;
+
+    moviesGrid.innerHTML = ``;
+
+    data.forEach(show => {
+        const showDiv = document.createElement("div");
+            showDiv.classList.add("show-item");
+
+            const imgSrc = show.show.image ? show.show.image.medium :
+
+            showDiv.innerHTML = `
+            <img src="${imgSrc}" alt="${show.show.name}">
+            <h3>${show.show.name}</h3>
+            <p>${show.show.summary ? show.show.summary : 'No hay descripción disponible.'}</p>
+        `;
+
+        gridContainer.appendChild(showDiv);
+    })
+
+    } catch (error) {
+        console.log("Error" , error);
+    }
+
+}
+
+document.addEventListener("DOMContentLoaded", loadMovies);
